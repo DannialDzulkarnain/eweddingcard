@@ -325,17 +325,46 @@
             countdown.innerHTML = `${days}h ${hours}j ${minutes}m ${seconds}s`;
         }, 1000);
 
+        let songInitialized = false;
+
+        function toggleSection(id) {
+            const allSections = ['songSection', 'mapSection', 'calendarSection', 'contactSection', 'rsvpSection'];
+            allSections.forEach(sec => {
+                const section = document.getElementById(sec);
+                if (sec !== id) {
+                    section.classList.add('hidden');
+                } else {
+                    section.classList.toggle('hidden');
+                    if (id === 'songSection' && !section.classList.contains('hidden') && !songInitialized) {
+                        // Load song ONLY once
+                        embedSong();
+                        songInitialized = true;
+                    }
+                }
+            });
+
+            const section = document.getElementById(id);
+            if (!section.classList.contains('hidden')) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
         function playSong() {
+            const songSection = document.getElementById("songSection");
+            const isHidden = songSection.classList.contains("hidden");
+            if (isHidden && !songInitialized) {
+                embedSong(true); // autoplay on first load
+                songInitialized = true;
+            }
+        }
+
+        function embedSong(autoplay = false) {
             const youtubeContainer = document.getElementById("youtubePlayerContainer");
-
-            // Clear previous iframe if any
-            youtubeContainer.innerHTML = "";
-
-            // Create new iframe
             const iframe = document.createElement("iframe");
+
             iframe.width = "100%";
             iframe.height = "315";
-            iframe.src = "https://www.youtube.com/embed/JpAy-RGecMw?autoplay=1&controls=1";
+            iframe.src = `https://www.youtube.com/embed/JpAy-RGecMw?controls=1${autoplay ? '&autoplay=1' : ''}`;
             iframe.title = "Lagu Perkahwinan";
             iframe.frameBorder = "0";
             iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen";
