@@ -168,7 +168,7 @@
             <p>Majlis Perkahwinan</p>
             <p>03 Ogos 2025</p>
             <button class="btn-primary"
-                onclick="document.getElementById('mainContent').scrollIntoView({ behavior: 'smooth' });">Lihat
+                onclick="document.getElementById('mainContent').scrollIntoView({ behavior: 'smooth' }); playSong();">Lihat
                 Jemputan</button>
         </div>
 
@@ -201,9 +201,9 @@
             <div class="section" id="gallerySection">
                 <h3>Galeri Gambar</h3>
                 <div class="slideshow-container">
-                    <div class="slide"><img src="img/pic1.jpg" alt="Gambar 1"></div>
-                    <div class="slide"><img src="img/pic2.jpg" alt="Gambar 2"></div>
-                    <div class="slide"><img src="img/pic3.jpg" alt="Gambar 3"></div>
+                    <div class="slide"><img src="img/pic4.jpg" alt="Gambar 1"></div>
+                    <div class="slide"><img src="img/pic5.jpg" alt="Gambar 2"></div>
+                    <div class="slide"><img src="img/pic6.jpg" alt="Gambar 3"></div>
                 </div>
                 <div class="dots">
                     <span class="dot" onclick="currentSlide(1)"></span>
@@ -219,16 +219,9 @@
 
             <div class="section hidden" id="songSection">
                 <h3>Lagu Perkahwinan</h3>
-                <div class="video-container">
-                    <iframe width="100%" height="315"
-                        src="https://www.youtube.com/embed/JpAy-RGecMw?autoplay=1&loop=1&playlist=JpAy-RGecMw"
-                        title="Lagu Perkahwinan" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen>
-                    </iframe>
+                <div class="video-container" id="youtubePlayerContainer">
                 </div>
             </div>
-
 
             <div class="section hidden" id="mapSection">
                 <h3>Lokasi</h3>
@@ -272,11 +265,21 @@
         function toggleSection(id) {
             const allSections = ['songSection', 'mapSection', 'calendarSection', 'contactSection', 'rsvpSection'];
             allSections.forEach(sec => {
-                if (sec !== id) document.getElementById(sec).classList.add('hidden');
+                const section = document.getElementById(sec);
+                if (sec !== id) {
+                    section.classList.add('hidden');
+                } else {
+                    section.classList.toggle('hidden');
+                    if (id === 'songSection' && !section.classList.contains('hidden')) {
+                        // Load and play the song if the section is shown
+                        playSong();
+                    }
+                }
             });
             const section = document.getElementById(id);
-            section.classList.toggle('hidden');
-            section.scrollIntoView({ behavior: 'smooth' });
+            if (!section.classList.contains('hidden')) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
         }
 
         let slideIndex = 1;
@@ -321,6 +324,27 @@
 
             countdown.innerHTML = `${days}h ${hours}j ${minutes}m ${seconds}s`;
         }, 1000);
+
+        function playSong() {
+            const youtubeContainer = document.getElementById("youtubePlayerContainer");
+
+            // Clear previous iframe if any
+            youtubeContainer.innerHTML = "";
+
+            // Create new iframe
+            const iframe = document.createElement("iframe");
+            iframe.width = "100%";
+            iframe.height = "315";
+            iframe.src = "https://www.youtube.com/embed/JpAy-RGecMw?autoplay=1&controls=1";
+            iframe.title = "Lagu Perkahwinan";
+            iframe.frameBorder = "0";
+            iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen";
+            iframe.allowFullscreen = true;
+
+            youtubeContainer.appendChild(iframe);
+        }
+
+
     </script>
 </body>
 
