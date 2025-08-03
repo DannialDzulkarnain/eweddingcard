@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="ms">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Undangan Perkahwinan</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f9f9f9;
+            color: #333;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        header,
+        .section {
+            padding: 2rem 1rem;
+            text-align: center;
+        }
+
+        .intro {
+            background: url('https://images.unsplash.com/photo-1520975912224-d499f1f1dd6f?fit=crop&w=800') no-repeat center center;
+            background-size: cover;
+            color: black;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .btn-primary {
+            padding: 0.8rem 1.2rem;
+            background-color: #6b4b3e;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            margin-top: 1rem;
+            cursor: pointer;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-around;
+            background-color: #6b4b3e;
+            padding: 0.5rem;
+            position: sticky;
+            bottom: 0;
+            width: 100%;
+            z-index: 999;
+            flex-wrap: wrap;
+        }
+
+        .nav button {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 0.9rem;
+            padding: 0.5rem;
+            cursor: pointer;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 200px;
+            border: none;
+        }
+
+        .rsvp-options button {
+            padding: 0.5rem 1rem;
+            margin: 0.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .rsvp-options .yes {
+            background: #d4af37;
+            color: white;
+        }
+
+        .rsvp-options .no {
+            background: #ccc;
+        }
+
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            margin: auto;
+        }
+
+        .slide {
+            display: none;
+        }
+
+        .slide img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .dots {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .dot {
+            height: 12px;
+            width: 12px;
+            margin: 0 4px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
+
+        .active {
+            background-color: #6b4b3e;
+        }
+
+        .verse {
+            font-style: italic;
+            color: #555;
+            margin-top: 1rem;
+        }
+
+        .countdown {
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            color: #6b4b3e;
+        }
+
+        @media (min-width: 768px) {
+            .video-container iframe {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="intro">
+            <h1>Ahmad & Aisyah</h1>
+            <p>Majlis Perkahwinan</p>
+            <p>03 Ogos 2025</p>
+            <button class="btn-primary"
+                onclick="document.getElementById('mainContent').scrollIntoView({ behavior: 'smooth' });">Lihat
+                Jemputan</button>
+        </div>
+
+        <div id="mainContent">
+            <header>
+                <h2>Undangan Majlis Perkahwinan</h2>
+                <p>Assalamualaikum warahmatullahi wabarakatuh</p>
+            </header>
+
+            <div class="section">
+                <p>Encik Rahman & Puan Siti</p>
+                <p>Dengan penuh kesyukuran, kami menjemput anda ke majlis perkahwinan anakanda kami:</p>
+                <h2>Ahmad & Aisyah</h2>
+                <h3>Ahad, 03 Ogos 2025</h3>
+                <p>Urban Park Hall, Alam Impian, Selangor</p>
+            </div>
+
+            <div class="section">
+                <h3>Atur Cara Majlis</h3>
+                <p>Jamuan Makan: 11:00 pagi - 4:00 petang</p>
+                <p>Ketibaan Pengantin: 12:30 tengah hari</p>
+                <p>Sila RSVP sebelum 20 Julai 2025</p>
+            </div>
+
+            <div class="section verse">
+                “Dan Kami telah menciptakan kamu berpasang-pasangan.”<br />
+                <strong>(An-Naba’ : 8)</strong>
+            </div>
+
+            <div class="section" id="gallerySection">
+                <h3>Galeri Gambar</h3>
+                <div class="slideshow-container">
+                    <div class="slide"><img src="img/pic1.jpg" alt="Gambar 1"></div>
+                    <div class="slide"><img src="img/pic2.jpg" alt="Gambar 2"></div>
+                    <div class="slide"><img src="img/pic3.jpg" alt="Gambar 3"></div>
+                </div>
+                <div class="dots">
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>Kiraan Detik</h3>
+                <div id="countdown" class="countdown"></div>
+            </div>
+
+            <div class="section hidden" id="songSection">
+                <h3>Lagu Perkahwinan</h3>
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/I1nO_H4xX2A" allowfullscreen></iframe>
+                </div>
+            </div>
+
+            <div class="section hidden" id="mapSection">
+                <h3>Lokasi</h3>
+                <p>
+                    <a href="https://www.google.com/maps" target="_blank">Google Maps</a> |
+                    <a href="https://waze.com" target="_blank">Waze</a>
+                </p>
+            </div>
+
+            <div class="section hidden" id="calendarSection">
+                <h3>Tambah ke Kalendar</h3>
+                <p><a href="#">Google Calendar</a> | <a href="#">Apple Calendar</a></p>
+            </div>
+
+            <div class="section hidden" id="contactSection">
+                <h3>Hubungi</h3>
+                <p><strong>Wakil Keluarga</strong> – <a href="https://wa.me/60123456789" target="_blank">WhatsApp</a>
+                </p>
+            </div>
+
+            <div class="section hidden" id="rsvpSection">
+                <h3>RSVP</h3>
+                <p>Sila maklumkan kehadiran anda sebelum 20 Julai 2025</p>
+                <div class="rsvp-options">
+                    <button class="yes">Hadir</button>
+                    <button class="no">Tidak Hadir</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav">
+            <button onclick="toggleSection('songSection')">Lagu</button>
+            <button onclick="toggleSection('mapSection')">Lokasi</button>
+            <button onclick="toggleSection('calendarSection')">Kalendar</button>
+            <button onclick="toggleSection('contactSection')">Hubungi</button>
+            <button onclick="toggleSection('rsvpSection')">RSVP</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleSection(id) {
+            const allSections = ['songSection', 'mapSection', 'calendarSection', 'contactSection', 'rsvpSection'];
+            allSections.forEach(sec => {
+                if (sec !== id) document.getElementById(sec).classList.add('hidden');
+            });
+            const section = document.getElementById(id);
+            section.classList.toggle('hidden');
+            section.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            const slides = document.getElementsByClassName("slide");
+            const dots = document.getElementsByClassName("dot");
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+        }
+
+        setInterval(() => {
+            slideIndex++;
+            showSlides(slideIndex);
+        }, 4000);
+
+        // Countdown
+        const eventDate = new Date("2025-08-03T11:00:00").getTime();
+        const countdown = document.getElementById("countdown");
+
+        setInterval(() => {
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            countdown.innerHTML = `${days}h ${hours}j ${minutes}m ${seconds}s`;
+        }, 1000);
+    </script>
+</body>
+
+</html>
