@@ -510,14 +510,25 @@
             // Section toggle
             function toggleSection(id) {
                 const allSections = ['songSection', 'mapSection', 'calendarSection', 'contactSection', 'rsvpSection'];
+                const target = document.getElementById(id);
+                const isVisible = !target.classList.contains('hidden');
+
                 allSections.forEach(sec => {
                     const section = document.getElementById(sec);
-                    section.classList.add('hidden');
+                    if (section && section !== target) {
+                        section.classList.add('hidden');
+                    }
                 });
-                const target = document.getElementById(id);
-                target.classList.remove('hidden');
-                target.scrollIntoView({ behavior: 'smooth' });
+
+                // Toggle current section
+                if (isVisible) {
+                    target.classList.add('hidden');
+                } else {
+                    target.classList.remove('hidden');
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
             }
+
 
             // RSVP logic
             function selectRSVP(type) {
