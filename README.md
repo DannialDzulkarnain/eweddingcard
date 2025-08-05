@@ -13,24 +13,6 @@ This project is a modern and personalized web-based invitation created with love
 - 📱 Mobile responsive design
 - 🌸 Thematic background and UI inspired by traditional elegance
 
-## 📁 Project Structure
-
-project-folder/
-│
-├── index.html             # Main landing page
-├── css/
-│   └── style.css          # Custom styling
-├── js/
-│   └── script.js          # All interactions and event handlers
-├── img/
-│   └── bg1.jpg            # Background and wedding photos
-├── icon/
-│   └── \*.png              # Icon images (calendar, WhatsApp, etc.)
-├── calendar/
-│   └── dannial-wedding.ics # For Apple Calendar download
-
-````
-
 ## 🛠️ Tech Stack
 
 - **HTML5**
