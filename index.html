@@ -137,6 +137,7 @@
         }
 
         form input,
+        form select,
         form textarea {
             padding: 8px;
             font-size: 1em;
@@ -384,16 +385,21 @@
             <div class="section hidden" id="calendarSection">
                 <h3>Tambah ke Kalendar</h3>
                 <div class="calendar-links">
-                    <a href="#" class="calendar-item">
+                    <!-- Apple Calendar (.ics file download) -->
+                    <a href="calendar/dannial-wedding.ics" class="calendar-item" download>
                         <img src="icon/calendar.png" alt="Apple Calendar Icon">
                         <span>Apple Calendar</span>
                     </a>
-                    <a href="#" class="calendar-item">
+
+                    <!-- Google Calendar -->
+                    <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Dannial+%26+Nadia's+Wedding&dates=20250803T030000Z/20250803T070000Z&details=Join+us+for+our+wedding!&location=Dewan+Serbaguna%2C+Kuala+Lumpur"
+                        target="_blank" class="calendar-item">
                         <img src="icon/google-calendar.png" alt="Google Calendar Icon">
                         <span>Google Calendar</span>
                     </a>
                 </div>
             </div>
+
 
             <div class="section hidden" id="contactSection">
                 <h3>Hubungi</h3>
@@ -417,6 +423,20 @@
                         <div class="contact-info">
                             <p class="name">Pn Che Zarinah</p>
                             <p class="role">Ibu</p>
+                        </div>
+                        <div class="contact-actions">
+                            <a href="https://wa.me/" target="_blank">
+                                <img src="icon/whatsapp.png" alt="WhatsApp">
+                            </a>
+                            <a href="tel:">
+                                <img src="icon/phone-call.png" alt="Phone">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="contact-person">
+                        <div class="contact-info">
+                            <p class="name">Adrianna Salsabil</p>
+                            <p class="role">Adik</p>
                         </div>
                         <div class="contact-actions">
                             <a href="https://wa.me/" target="_blank">
@@ -461,7 +481,13 @@
 
                         <div id="jumlahKehadiranField">
                             <label>Jumlah Kehadiran:</label>
-                            <input type="number" name="jumlah" min="1">
+                            <select id="attendance">
+                                <option>1 orang</option>
+                                <option>2 orang</option>
+                                <option>3 orang</option>
+                                <option>4 orang</option>
+                            </select>
+                            <!-- <input type="number" name="jumlah" min="1"> -->
                         </div>
 
                         <button type="submit">Hantar</button>
