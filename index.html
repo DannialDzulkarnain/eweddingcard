@@ -299,6 +299,48 @@
             height: 28px;
             vertical-align: middle;
         }
+
+        #ucapanSection {
+            padding: 20px;
+            background: #fff0f6;
+            margin-top: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .ucapan-container {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+            background: #ffffff;
+            border-radius: 10px;
+            padding: 10px;
+            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .ucapan-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            animation: scrollUp 20s linear infinite;
+        }
+
+        .ucapan-list li {
+            padding: 8px 15px;
+            border-bottom: 1px solid #eee;
+            font-size: 14px;
+            color: #333;
+        }
+
+        @keyframes scrollUp {
+            0% {
+                transform: translateY(100%);
+            }
+
+            100% {
+                transform: translateY(-100%);
+            }
+        }
     </style>
 </head>
 
@@ -334,9 +376,13 @@
                 <p>Sila RSVP sebelum 20 Julai 2025</p>
             </div>
 
-            <div class="section verse">
-                “Dan Kami telah menciptakan kamu berpasang-pasangan.”<br />
-                <strong>(An-Naba’ : 8)</strong>
+            <div class="section">
+                <h3>Kiraan Detik</h3>
+                <div id="countdown" class="countdown"></div>
+            </div>
+
+            <div class="section">
+                <p>Sila maklumkan kehadiran anda sebelum 20 Julai 2025</p>
             </div>
 
             <div class="section" id="gallerySection">
@@ -353,13 +399,19 @@
                 </div>
             </div>
 
-            <div class="section">
-                <h3>Kiraan Detik</h3>
-                <div id="countdown" class="countdown"></div>
+            <div class="section verse">
+                “Dan Kami telah menciptakan kamu berpasang-pasangan.”<br />
+                <strong>(An-Naba’ : 8)</strong>
             </div>
 
-            <div class="section">
-                <p>Sila maklumkan kehadiran anda sebelum 20 Julai 2025</p>
+            <!-- Ucapan Section -->
+            <div class="section" id="ucapanSection">
+                <h3>Ucapan</h3>
+                <div class="ucapan-container">
+                    <ul class="ucapan-list" id="ucapanList">
+                        <!-- Sample ucapan messages -->
+                    </ul>
+                </div>
             </div>
 
             <div class="section hidden" id="songSection">
@@ -481,7 +533,7 @@
 
                         <div id="jumlahKehadiranField">
                             <label>Jumlah Kehadiran:</label>
-                            <select id="attendance">
+                            <select id="kehadiran">
                                 <option>1 orang</option>
                                 <option>2 orang</option>
                                 <option>3 orang</option>
@@ -497,7 +549,6 @@
                     <!-- Confirmation Message -->
                     <div id="rsvpMessage" class="hidden">
                         <p>Terima kasih atas maklum balas anda!</p>
-                        <button onclick="cancelRSVP()">Ubah Jawapan</button>
                     </div>
                 </div>
             </div>
@@ -611,6 +662,77 @@
                 iframe.allowFullscreen = true;
                 youtubeContainer.appendChild(iframe);
             }
+
+            // const form = document.getElementById("rsvpForm"); // your form id
+            // const ucapanList = document.getElementById("ucapanList");
+
+            // form.addEventListener("submit", async function (e) {
+            //     e.preventDefault();
+
+            //     const nama = document.getElementById("nama").value;
+            //     const kehadiran = document.querySelector('input[name="kehadiran"]:checked').value;
+            //     const jumlah = kehadiran === "Hadir" ? document.getElementById("jumlah").value : "";
+            //     const ucapan = document.getElementById("ucapan").value;
+
+            //     const data = { nama, kehadiran, jumlah, ucapan };
+
+            //     try {
+            //         await fetch("https://script.google.com/macros/s/AKfycbx0M8-g8b4KkE7enkWQXRe25Dc9xjz-SbUMEU05JDC9loyEeLsJINXaF5c5CPNFz2-n/exec", {
+            //             method: "POST",
+            //             body: JSON.stringify(data),
+            //             headers: { "Content-Type": "application/json" }
+            //         });
+
+            //         if (ucapan) {
+            //             addUcapanToList(nama, ucapan);
+            //         }
+
+            //         alert("Terima kasih! Maklumat anda telah dihantar.");
+            //         form.reset();
+            //     } catch (error) {
+            //         console.error("Error submitting to Google Sheets", error);
+            //         alert("Ralat semasa menghantar. Sila cuba lagi.");
+            //     }
+            // });
+
+            // function addUcapanToList(nama, ucapan) {
+            //     const li = document.createElement("li");
+            //     li.textContent = `${nama}: "${ucapan}"`;
+            //     ucapanList.appendChild(li);
+            // }
+
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbx0M8-g8b4KkE7enkWQXRe25Dc9xjz-SbUMEU05JDC9loyEeLsJINXaF5c5CPNFz2-n/exec'; // Replace with your actual web app URL
+
+            form.addEventListener("submit", function (e) {
+                e.preventDefault();
+
+                const formData = {
+                    nama: document.getElementById("nama").value,
+                    kehadiran: document.querySelector("input[name='kehadiran']:checked")?.value || '',
+                    jumlah: document.getElementById("jumlahKehadiran").value || '',
+                    ucapan: document.getElementById("ucapan").value || ''
+                };
+
+                fetch(scriptURL, {
+                    method: "POST",
+                    body: JSON.stringify(formData)
+                })
+                    .then((response) => {
+                        alert("Terima kasih! Kehadiran anda telah direkod.");
+                        form.reset();
+                        hadirSection.classList.add("hidden");
+                        tidakHadirSection.classList.add("hidden");
+                        hadirButton.disabled = false;
+                        tidakHadirButton.disabled = false;
+                        showImage.classList.remove("hidden");
+                    })
+                    .catch((error) => {
+                        alert("Maaf, berlaku ralat. Sila cuba lagi.");
+                        console.error("Error!", error.message);
+                    });
+            });
+
+
         </script>
 </body>
 
