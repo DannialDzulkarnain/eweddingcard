@@ -506,7 +506,8 @@
 
 
             <div class="section hidden" id="rsvpSection">
-                <div id="rsvpSection" class="section">
+                <!-- <div id="rsvpWrapper" class="section"> -->
+                <div class="section">
                     <h2>RSVP</h2>
 
                     <!-- RSVP CHOICE -->
@@ -523,25 +524,24 @@
 
                     <!-- RSVP FORM -->
                     <form id="rsvpForm" class="hidden" onsubmit="submitRSVP(event)">
-                        <input type="hidden" id="rsvpType" name="rsvpType">
+                        <!-- Your other form fields -->
+                        <input type="text" name="nama" placeholder="Nama" required>
+                        <input type="textarea" name="ucapan" placeholder="Ucapan" required>
 
-                        <label>Nama:</label>
-                        <input type="text" name="nama" required>
+                        <!-- Hidden input for RSVP type -->
+                        <input type="hidden" name="kehadiran" id="rsvpType">
 
-                        <label>Ucapan:</label>
-                        <textarea name="ucapan" required></textarea>
-
+                        <!-- Jumlah Kehadiran (only shown if 'Hadir' is selected) -->
                         <div id="jumlahKehadiranField">
                             <label>Jumlah Kehadiran:</label>
-                            <select id="kehadiran">
-                                <option>1 orang</option>
-                                <option>2 orang</option>
-                                <option>3 orang</option>
-                                <option>4 orang</option>
+                            <select name="jumlah" id="kehadiran" required>
+                                <option value="-">Sila Pilih</option>
+                                <option value="1 orang">1 orang</option>
+                                <option value="2 orang">2 orang</option>
+                                <option value="3 orang">3 orang</option>
+                                <option value="4 orang">4 orang</option>
                             </select>
-                            <!-- <input type="number" name="jumlah" min="1"> -->
                         </div>
-
                         <button type="submit">Hantar</button>
                         <button type="button" onclick="cancelRSVP()">Batal</button>
                     </form>
@@ -626,13 +626,7 @@
                     document.getElementById("jumlahKehadiranField").style.display = "none";
                 }
             }
-
-            function submitRSVP(event) {
-                event.preventDefault();
-                document.getElementById("rsvpForm").classList.add("hidden");
-                document.getElementById("rsvpMessage").classList.remove("hidden");
-            }
-
+            // Cancel RSVP
             function cancelRSVP() {
                 document.getElementById("rsvpOptions").classList.remove("hidden");
                 document.getElementById("rsvpForm").classList.add("hidden");
@@ -663,75 +657,47 @@
                 youtubeContainer.appendChild(iframe);
             }
 
-            // const form = document.getElementById("rsvpForm"); // your form id
-            // const ucapanList = document.getElementById("ucapanList");
-
-            // form.addEventListener("submit", async function (e) {
-            //     e.preventDefault();
-
-            //     const nama = document.getElementById("nama").value;
-            //     const kehadiran = document.querySelector('input[name="kehadiran"]:checked').value;
-            //     const jumlah = kehadiran === "Hadir" ? document.getElementById("jumlah").value : "";
-            //     const ucapan = document.getElementById("ucapan").value;
-
-            //     const data = { nama, kehadiran, jumlah, ucapan };
-
-            //     try {
-            //         await fetch("https://script.google.com/macros/s/AKfycbx0M8-g8b4KkE7enkWQXRe25Dc9xjz-SbUMEU05JDC9loyEeLsJINXaF5c5CPNFz2-n/exec", {
-            //             method: "POST",
-            //             body: JSON.stringify(data),
-            //             headers: { "Content-Type": "application/json" }
-            //         });
-
-            //         if (ucapan) {
-            //             addUcapanToList(nama, ucapan);
-            //         }
-
-            //         alert("Terima kasih! Maklumat anda telah dihantar.");
-            //         form.reset();
-            //     } catch (error) {
-            //         console.error("Error submitting to Google Sheets", error);
-            //         alert("Ralat semasa menghantar. Sila cuba lagi.");
-            //     }
-            // });
-
-            // function addUcapanToList(nama, ucapan) {
-            //     const li = document.createElement("li");
-            //     li.textContent = `${nama}: "${ucapan}"`;
-            //     ucapanList.appendChild(li);
-            // }
-
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbx0M8-g8b4KkE7enkWQXRe25Dc9xjz-SbUMEU05JDC9loyEeLsJINXaF5c5CPNFz2-n/exec'; // Replace with your actual web app URL
-
-            form.addEventListener("submit", function (e) {
+            document.getElementById("rsvpForm").addEventListener("submit", function (e) {
                 e.preventDefault();
 
-                const formData = {
-                    nama: document.getElementById("nama").value,
-                    kehadiran: document.querySelector("input[name='kehadiran']:checked")?.value || '',
-                    jumlah: document.getElementById("jumlahKehadiran").value || '',
-                    ucapan: document.getElementById("ucapan").value || ''
-                };
+                const scriptURL = 'https://script.google.com/macros/s/AKfycbwGdXrF-RxI9bKAoBkibD5p5sjVdln7oe6-SohpZfMlMM2D41WpNDFwiyJgUxp2SpoJ6Q/exec';
+                const form = this;
+                const formData = new FormData(form);
 
                 fetch(scriptURL, {
-                    method: "POST",
-                    body: JSON.stringify(formData)
+                    method: 'POST',
+                    body: formData
                 })
-                    .then((response) => {
-                        alert("Terima kasih! Kehadiran anda telah direkod.");
-                        form.reset();
-                        hadirSection.classList.add("hidden");
-                        tidakHadirSection.classList.add("hidden");
-                        hadirButton.disabled = false;
-                        tidakHadirButton.disabled = false;
-                        showImage.classList.remove("hidden");
+                    .then(response => {
+                        if (response.ok) {
+                            // Success message
+                            alert("Terima kasih! Maklumat anda telah dihantar.");
+                            form.reset();
+                            document.getElementById("rsvpForm").classList.add("hidden");
+                            document.getElementById("rsvpOptions").classList.remove("hidden");
+
+                            // Disable all form elements
+                            const elements = form.elements;
+                            for (let i = 0; i < elements.length; i++) {
+                                elements[i].disabled = true;
+                            }
+
+                            // Disable RSVP choices (remove click functionality)
+                            document.getElementById("rsvpOptions").style.pointerEvents = "none";
+                            document.getElementById("rsvpOptions").style.opacity = "0.5"; // Optional: fade out
+
+                            // Optionally hide the form
+                            // form.classList.add("hidden");
+
+                        } else {
+                            // If the server returns an error status
+                            throw new Error("Ralat semasa menghantar. Sila cuba lagi.");
+                        }
                     })
-                    .catch((error) => {
-                        alert("Maaf, berlaku ralat. Sila cuba lagi.");
-                        console.error("Error!", error.message);
+                    .catch(error => {
+                        alert(error.message);
                     });
             });
-
 
         </script>
 </body>
