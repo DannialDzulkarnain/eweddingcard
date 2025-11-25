@@ -5,329 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Undangan Perkahwinan</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background: #f9f9f9;
-            color: #333;
-            display: flex;
-            justify-content: center;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 400px;
-            background-color: #fff;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
-            min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
-        }
-
-        header,
-        .section {
-            padding: 2rem 1rem;
-            text-align: center;
-        }
-
-        .intro {
-            /* background: url('https://images.unsplash.com/photo-1520975912224-d499f1f1dd6f?fit=crop&w=800') no-repeat center center; */
-            background: url('https://i.pinimg.com/736x/72/01/dc/7201dce8b4154cc8a8559f6568a4cf48.jpg') no-repeat center center;
-            background-size: cover;
-            color: black;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-
-        #mainContent {
-            background: rgb(245, 237, 238);
-            /* Example: your image in a folder */
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-
-        .btn-primary {
-            padding: 0.8rem 1.2rem;
-            background-color: #6b4b3e;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            font-size: 1rem;
-            margin-top: 1rem;
-            cursor: pointer;
-        }
-
-        .nav {
-            display: flex;
-            justify-content: space-around;
-            background-color: #6b4b3e;
-            padding: 0.5rem;
-            position: sticky;
-            bottom: 0;
-            width: 100%;
-            z-index: 999;
-            flex-wrap: wrap;
-        }
-
-        .nav button {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 0.9rem;
-            padding: 0.5rem;
-            cursor: pointer;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .video-container iframe {
-            width: 100%;
-            height: 200px;
-            border: none;
-        }
-
-        .rsvp-options {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 20px;
-        }
-
-        .rsvp-choice {
-            text-align: center;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .rsvp-choice img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            border: 2px solid #ccc;
-            padding: 10px;
-            background-color: #f9f9f9;
-        }
-
-        .rsvp-choice:hover {
-            transform: scale(1.1);
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            max-width: 400px;
-            margin: 20px auto;
-            gap: 10px;
-        }
-
-        form input,
-        form select,
-        form textarea {
-            padding: 8px;
-            font-size: 1em;
-        }
-
-        form button {
-            padding: 8px;
-            font-size: 1em;
-            cursor: pointer;
-        }
-
-        .slideshow-container {
-            position: relative;
-            max-width: 100%;
-            margin: auto;
-        }
-
-        .slide {
-            display: none;
-        }
-
-        .slide img {
-            width: 100%;
-            max-width: 735px;
-            height: auto;
-            aspect-ratio: 735 / 897;
-            object-fit: cover;
-            display: block;
-            margin: 0 auto;
-            border-radius: 10px;
-        }
-
-
-        .dots {
-            text-align: center;
-            margin-top: 1rem;
-        }
-
-        .dot {
-            height: 12px;
-            width: 12px;
-            margin: 0 4px;
-            background-color: #bbb;
-            border-radius: 50%;
-            display: inline-block;
-            transition: background-color 0.6s ease;
-        }
-
-        .active {
-            background-color: #6b4b3e;
-        }
-
-        .verse {
-            font-style: italic;
-            color: #555;
-            margin-top: 1rem;
-        }
-
-        .countdown {
-            font-size: 1.5rem;
-            margin-top: 1rem;
-            color: #6b4b3e;
-        }
-
-        @media (min-width: 768px) {
-            .video-container iframe {
-                height: 350px;
-            }
-        }
-
-        .calendar-links {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-
-        .calendar-item {
-            text-align: center;
-            text-decoration: none;
-            color: black;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .calendar-item img {
-            width: 64px;
-            height: 64px;
-            margin-bottom: 10px;
-        }
-
-        .calendar-item span {
-            display: block;
-            font-size: 16px;
-        }
-
-        .location-links {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-
-        .location-item {
-            text-align: center;
-            text-decoration: none;
-            color: black;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .location-item img {
-            width: 64px;
-            height: 64px;
-            margin-bottom: 10px;
-        }
-
-        .location-item span {
-            display: block;
-            font-size: 16px;
-        }
-
-        .contact-list {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .contact-person {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid #ddd;
-            padding: 10px 0;
-        }
-
-        .contact-info {
-            flex: 1;
-        }
-
-        .contact-info .name {
-            font-weight: bold;
-            margin: 0;
-        }
-
-        .contact-info .role {
-            font-style: italic;
-            color: #666;
-            margin: 0;
-        }
-
-        .contact-actions a {
-            margin-left: 15px;
-        }
-
-        .contact-actions img {
-            width: 28px;
-            height: 28px;
-            vertical-align: middle;
-        }
-
-        .ucapan-container {
-            height: 200px;
-            overflow: hidden;
-            position: relative;
-            border: 2px solid #ccc;
-            background: #fdfdfd;
-        }
-
-        .ucapan-list {
-            display: flex;
-            flex-direction: column;
-            animation: scroll-up 20s linear infinite;
-        }
-
-        .ucapan-container:hover .ucapan-list {
-            animation-play-state: paused;
-        }
-
-        @keyframes scroll-up {
-            0% {
-                transform: translateY(0);
-            }
-
-            100% {
-                transform: translateY(-100%);
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="src/css/styles.css">
 </head>
 
 <body>
@@ -395,9 +73,7 @@
             <div class="section" id="ucapanSection">
                 <h3>Ucapan</h3>
                 <div class="ucapan-container">
-                    <div class="ucapan-list" id="ucapanList">
-                        <!-- Messages will be loaded here -->
-                    </div>
+                    <div class="ucapan-track" id="ucapanTrack"></div>
                 </div>
             </div>
 
@@ -410,11 +86,13 @@
             <div class="section hidden" id="mapSection">
                 <h3>Lokasi</h3>
                 <div class="location-links">
-                    <a href="#" class="location-item">
+                    <a href="https://www.google.com/maps/search/?api=1&query=Dewan+Serbaguna%2C+Kuala+Lumpur" target="_blank"
+                        rel="noopener noreferrer" class="location-item">
                         <img src="icon/google-maps.png" alt="Google Map Icon">
                         <span>Google Map</span>
                     </a>
-                    <a href="#" class="location-item">
+                    <a href="https://www.waze.com/ul?ll=3.1390%2C101.6869&navigate=yes" target="_blank"
+                        rel="noopener noreferrer" class="location-item">
                         <img src="icon/waze.png" alt="Waze Icon">
                         <span>Waze</span>
                     </a>
@@ -425,7 +103,7 @@
                 <h3>Tambah ke Kalendar</h3>
                 <div class="calendar-links">
                     <!-- Apple Calendar (.ics file download) -->
-                    <a href="calendar/dannial-wedding.ics" class="calendar-item" download>
+                    <a href="src/calendar/dannial-wedding.ics" class="calendar-item" download>
                         <img src="icon/calendar.png" alt="Apple Calendar Icon">
                         <span>Apple Calendar</span>
                     </a>
@@ -449,10 +127,10 @@
                             <p class="role">Ayah</p>
                         </div>
                         <div class="contact-actions">
-                            <a href="https://wa.me/" target="_blank">
+                            <a href="https://wa.me/601234567890" target="_blank" rel="noopener noreferrer">
                                 <img src="icon/whatsapp.png" alt="WhatsApp">
                             </a>
-                            <a href="tel:">
+                            <a href="tel:+601234567890">
                                 <img src="icon/phone-call.png" alt="Phone">
                             </a>
                         </div>
@@ -464,10 +142,10 @@
                             <p class="role">Ibu</p>
                         </div>
                         <div class="contact-actions">
-                            <a href="https://wa.me/" target="_blank">
+                            <a href="https://wa.me/601234567890" target="_blank" rel="noopener noreferrer">
                                 <img src="icon/whatsapp.png" alt="WhatsApp">
                             </a>
-                            <a href="tel:">
+                            <a href="tel:+601234567890">
                                 <img src="icon/phone-call.png" alt="Phone">
                             </a>
                         </div>
@@ -478,10 +156,10 @@
                             <p class="role">Adik</p>
                         </div>
                         <div class="contact-actions">
-                            <a href="https://wa.me/" target="_blank">
+                            <a href="https://wa.me/601234567890" target="_blank" rel="noopener noreferrer">
                                 <img src="icon/whatsapp.png" alt="WhatsApp">
                             </a>
-                            <a href="tel:">
+                            <a href="tel:+601234567890">
                                 <img src="icon/phone-call.png" alt="Phone">
                             </a>
                         </div>
@@ -510,19 +188,19 @@
                     </div>
 
                     <!-- RSVP FORM -->
-                    <form id="rsvpForm" class="hidden" onsubmit="submitRSVP(event)">
+                    <form id="rsvpForm" class="hidden">
                         <!-- Your other form fields -->
                         <input type="text" name="nama" placeholder="Nama" required>
-                        <input type="textarea" name="ucapan" placeholder="Ucapan" required>
+                        <textarea name="ucapan" placeholder="Ucapan" rows="3" required></textarea>
 
                         <!-- Hidden input for RSVP type -->
                         <input type="hidden" name="kehadiran" id="rsvpType">
 
                         <!-- Jumlah Kehadiran (only shown if 'Hadir' is selected) -->
-                        <div id="jumlahKehadiranField">
+                        <div id="jumlahKehadiranField" class="hidden">
                             <label>Jumlah Kehadiran:</label>
-                            <select name="jumlah" id="kehadiran" required>
-                                <option value="-">Sila Pilih</option>
+                            <select name="jumlah" id="jumlahKehadiran">
+                                <option value="">Sila Pilih</option>
                                 <option value="1 orang">1 orang</option>
                                 <option value="2 orang">2 orang</option>
                                 <option value="3 orang">3 orang</option>
@@ -548,184 +226,7 @@
                 <button onclick="toggleSection('rsvpSection')">RSVP</button>
             </div>
         </div>
-
-        <script>
-            // Slideshow
-            let slideIndex = 1;
-            showSlides(slideIndex);
-            function currentSlide(n) { showSlides(slideIndex = n); }
-            function showSlides(n) {
-                const slides = document.getElementsByClassName("slide");
-                const dots = document.getElementsByClassName("dot");
-                if (n > slides.length) { slideIndex = 1; }
-                if (n < 1) { slideIndex = slides.length; }
-                for (let i = 0; i < slides.length; i++) { slides[i].style.display = "none"; }
-                for (let i = 0; i < dots.length; i++) { dots[i].className = dots[i].className.replace(" active", ""); }
-                slides[slideIndex - 1].style.display = "block";
-                dots[slideIndex - 1].className += " active";
-            }
-            setInterval(() => { slideIndex++; showSlides(slideIndex); }, 4000);
-
-            // Countdown
-            const eventDate = new Date("2025-08-03T11:00:00").getTime();
-            const countdown = document.getElementById("countdown");
-            setInterval(() => {
-                const now = new Date().getTime();
-                const distance = eventDate - now;
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                countdown.innerHTML = `${days}h ${hours}j ${minutes}m ${seconds}s`;
-            }, 1000);
-
-            // Section toggle
-            function toggleSection(id) {
-                const allSections = ['songSection', 'mapSection', 'calendarSection', 'contactSection', 'rsvpSection'];
-                const target = document.getElementById(id);
-                const isVisible = !target.classList.contains('hidden');
-
-                allSections.forEach(sec => {
-                    const section = document.getElementById(sec);
-                    if (section && section !== target) {
-                        section.classList.add('hidden');
-                    }
-                });
-
-                // Toggle current section
-                if (isVisible) {
-                    target.classList.add('hidden');
-                } else {
-                    target.classList.remove('hidden');
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            }
-
-
-            // RSVP logic
-            function selectRSVP(type) {
-                document.getElementById("rsvpOptions").classList.add("hidden");
-                document.getElementById("rsvpForm").classList.remove("hidden");
-                document.getElementById("rsvpType").value = type;
-                if (type === "yes") {
-                    document.getElementById("jumlahKehadiranField").style.display = "block";
-                } else {
-                    document.getElementById("jumlahKehadiranField").style.display = "none";
-                }
-            }
-            // Cancel RSVP
-            function cancelRSVP() {
-                document.getElementById("rsvpOptions").classList.remove("hidden");
-                document.getElementById("rsvpForm").classList.add("hidden");
-                document.getElementById("rsvpMessage").classList.add("hidden");
-            }
-
-            // YouTube embedding (intact as requested)
-            let songInitialized = false;
-            function playSong() {
-                const songSection = document.getElementById("songSection");
-                const isHidden = songSection.classList.contains("hidden");
-                if (isHidden && !songInitialized) {
-                    embedSong(true);
-                    songInitialized = true;
-                }
-            }
-
-            function embedSong(autoplay = false) {
-                const youtubeContainer = document.getElementById("youtubePlayerContainer");
-                const iframe = document.createElement("iframe");
-                iframe.width = "100%";
-                iframe.height = "315";
-                iframe.src = `https://www.youtube.com/embed/JpAy-RGecMw?controls=1${autoplay ? '&autoplay=1' : ''}`;
-                iframe.title = "Lagu Perkahwinan";
-                iframe.frameBorder = "0";
-                iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen";
-                iframe.allowFullscreen = true;
-                youtubeContainer.appendChild(iframe);
-            }
-
-            document.getElementById("rsvpForm").addEventListener("submit", function (e) {
-                e.preventDefault();
-
-                const scriptURL = 'https://script.google.com/macros/s/AKfycbzb4DwWHbkal5RirIswPmzqFyaIjou40DRPh9AkyzQ0ILnfv9bzHjil2b_XjkkP3_dTTw/exec';
-                const form = this;
-                const formData = new FormData(form);
-
-                fetch(scriptURL, {
-                    method: 'POST',
-                    body: formData
-                })
-                    .then(response => {
-                        if (response.ok) {
-                            // Success message
-                            alert("Terima kasih! Maklumat anda telah dihantar.");
-                            form.reset();
-                            document.getElementById("rsvpForm").classList.add("hidden");
-                            document.getElementById("rsvpOptions").classList.remove("hidden");
-
-                            // Disable all form elements
-                            const elements = form.elements;
-                            for (let i = 0; i < elements.length; i++) {
-                                elements[i].disabled = true;
-                            }
-
-                            // Disable RSVP choices (remove click functionality)
-                            document.getElementById("rsvpOptions").style.pointerEvents = "none";
-                            document.getElementById("rsvpOptions").style.opacity = "0.5"; // Optional: fade out
-
-                            // Optionally hide the form
-                            // form.classList.add("hidden");
-
-                        } else {
-                            // If the server returns an error status
-                            throw new Error("Ralat semasa menghantar. Sila cuba lagi.");
-                        }
-                    })
-                    .catch(error => {
-                        alert(error.message);
-                    });
-            });
-
-            // Load Ucapan from Google Apps Script
-            async function loadUcapan() {
-                try {
-                    const scriptUrl = 'https://script.google.com/macros/s/AKfycbzb4DwWHbkal5RirIswPmzqFyaIjou40DRPh9AkyzQ0ILnfv9bzHjil2b_XjkkP3_dTTw/exec';
-                    const response = await fetch(scriptUrl);
-                    const data = await response.json();
-
-                    // Target the inner scrolling element with the ID 'ucapanList'
-                    const ucapanList = document.getElementById('ucapanList');
-
-                    // Clear any existing content
-                    ucapanList.innerHTML = '';
-
-                    if (Array.isArray(data) && data.length) {
-                        data.forEach(item => {
-                            // Only add if nama and ucapan are present
-                            if (item.nama && item.ucapan) {
-                                const message = document.createElement('div');
-                                message.className = 'ucapan-item';
-                                message.innerHTML = `<strong>${item.nama}</strong>: ${item.ucapan}`;
-                                ucapanList.appendChild(message);
-                            }
-                        });
-
-                        // Duplicate the content for smooth, infinite scrolling
-                        const clone = ucapanList.cloneNode(true);
-                        ucapanList.parentElement.appendChild(clone);
-                    } else {
-                        ucapanList.innerHTML = '<div class="ucapan-item">Tiada ucapan.</div>';
-                    }
-
-                } catch (error) {
-                    document.getElementById('ucapanList').innerHTML = '<div class="ucapan-item">Gagal memuatkan ucapan. Sila cuba lagi.</div>';
-                    console.error('Error fetching ucapan:', error);
-                }
-            }
-
-            // Call the function to load ucapan when the page loads
-            loadUcapan();
-        </script>
+        <script src="src/js/main.js" defer></script>
+    </div>
 </body>
-
 </html>
