@@ -8,49 +8,83 @@
     <link rel="stylesheet" href="src/css/styles.css">
 </head>
 
-<body>
+<body class="intro-locked">
+    <div class="page-shell"></div>
     <div class="container">
-        <div class="intro">
-            <h1>Dannial & Nadia</h1>
-            <p>Majlis Perkahwinan</p>
-            <p>03 Ogos 2025</p>
-            <button class="btn-primary"
-                onclick="document.getElementById('mainContent').scrollIntoView({ behavior: 'smooth' }); playSong();">Lihat
-                Jemputan</button>
+        <div class="intro" id="introGate">
+            <div class="intro-gate" id="introOverlay">
+                <div class="door-panel door-left" aria-hidden="true"></div>
+                <div class="door-panel door-right" aria-hidden="true"></div>
+                <button class="btn-gate" onclick="openInvitation()">Buka</button>
+            </div>
+            <div class="butterfly-flock" aria-hidden="true">
+                <span class="butterfly" style="--tx:-220px;--ty:-200px;--rot:-34deg;--delay:0.02s;--duration:1.6s;--size:13px;"></span>
+                <span class="butterfly" style="--tx:-150px;--ty:-230px;--rot:-20deg;--delay:0.08s;--duration:1.75s;--size:12px;"></span>
+                <span class="butterfly" style="--tx:-70px;--ty:-180px;--rot:-8deg;--delay:0.14s;--duration:1.5s;--size:11px;"></span>
+                <span class="butterfly" style="--tx:70px;--ty:-195px;--rot:10deg;--delay:0.05s;--duration:1.55s;--size:12px;"></span>
+                <span class="butterfly" style="--tx:150px;--ty:-230px;--rot:20deg;--delay:0.11s;--duration:1.7s;--size:13px;"></span>
+                <span class="butterfly" style="--tx:220px;--ty:-200px;--rot:32deg;--delay:0.18s;--duration:1.8s;--size:12px;"></span>
+                <span class="butterfly" style="--tx:-120px;--ty:-150px;--rot:-18deg;--delay:0.21s;--duration:1.45s;--size:10px;"></span>
+                <span class="butterfly" style="--tx:120px;--ty:-150px;--rot:18deg;--delay:0.16s;--duration:1.5s;--size:10px;"></span>
+                <span class="butterfly" style="--tx:-280px;--ty:-240px;--rot:-44deg;--delay:0.07s;--duration:1.9s;--size:12px;"></span>
+                <span class="butterfly" style="--tx:-245px;--ty:-190px;--rot:-38deg;--delay:0.12s;--duration:1.7s;--size:11px;"></span>
+                <span class="butterfly" style="--tx:-190px;--ty:-275px;--rot:-30deg;--delay:0.25s;--duration:2s;--size:13px;"></span>
+                <span class="butterfly" style="--tx:-95px;--ty:-260px;--rot:-12deg;--delay:0.31s;--duration:1.88s;--size:11px;"></span>
+                <span class="butterfly" style="--tx:-30px;--ty:-225px;--rot:-4deg;--delay:0.19s;--duration:1.62s;--size:10px;"></span>
+                <span class="butterfly" style="--tx:0px;--ty:-290px;--rot:0deg;--delay:0.28s;--duration:2.05s;--size:14px;"></span>
+                <span class="butterfly" style="--tx:38px;--ty:-245px;--rot:6deg;--delay:0.33s;--duration:1.76s;--size:10px;"></span>
+                <span class="butterfly" style="--tx:96px;--ty:-265px;--rot:14deg;--delay:0.23s;--duration:1.92s;--size:12px;"></span>
+                <span class="butterfly" style="--tx:185px;--ty:-285px;--rot:28deg;--delay:0.29s;--duration:2.02s;--size:13px;"></span>
+                <span class="butterfly" style="--tx:250px;--ty:-220px;--rot:36deg;--delay:0.35s;--duration:1.84s;--size:11px;"></span>
+                <span class="butterfly" style="--tx:290px;--ty:-250px;--rot:46deg;--delay:0.39s;--duration:2.08s;--size:12px;"></span>
+                <span class="butterfly" style="--tx:-170px;--ty:-140px;--rot:-24deg;--delay:0.42s;--duration:1.58s;--size:9px;"></span>
+                <span class="butterfly" style="--tx:-60px;--ty:-130px;--rot:-9deg;--delay:0.46s;--duration:1.52s;--size:9px;"></span>
+                <span class="butterfly" style="--tx:60px;--ty:-130px;--rot:9deg;--delay:0.44s;--duration:1.54s;--size:9px;"></span>
+                <span class="butterfly" style="--tx:170px;--ty:-140px;--rot:24deg;--delay:0.48s;--duration:1.6s;--size:9px;"></span>
+                <span class="butterfly" style="--tx:-320px;--ty:-300px;--rot:-52deg;--delay:0.52s;--duration:2.2s;--size:13px;"></span>
+                <span class="butterfly" style="--tx:320px;--ty:-300px;--rot:52deg;--delay:0.56s;--duration:2.2s;--size:13px;"></span>
+            </div>
+            <div class="intro-content">
+                <p class="intro-kicker">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</p>
+                <h1>Dannial <span>&</span> Nadia</h1>
+                <p class="intro-subtitle">Majlis Perkahwinan</p>
+                <p class="intro-date">Ahad, 03 Ogos 2025</p>
+                <button class="btn-primary btn-secondary-cta" onclick="proceedToDetails()">Lihat Butiran</button>
+            </div>
         </div>
 
-        <div id="mainContent">
-            <header>
+        <main id="mainContent">
+            <header class="hero-card">
                 <h2>Undangan Majlis Perkahwinan</h2>
                 <p>Assalamualaikum warahmatullahi wabarakatuh</p>
             </header>
 
-            <div class="section">
+            <section class="section">
                 <p>Encik Ahmad Sahmulaili & Puan Che Zarinah</p>
                 <p>Dengan penuh kesyukuran, kami menjemput anda ke majlis perkahwinan anakanda kami:</p>
                 <h2>Dannial & Nadia</h2>
                 <h3>Ahad, 03 Ogos 2025</h3>
                 <p>Dewan Serbaguna, Kuala Lumpur</p>
-            </div>
+            </section>
 
-            <div class="section">
+            <section class="section">
                 <h3>Atur Cara Majlis</h3>
                 <p>Jamuan Makan: 11:00 pagi - 4:00 petang</p>
                 <p>Ketibaan Pengantin: 12:30 tengah hari</p>
                 <!-- <p>Sila RSVP sebelum 20 Julai 2025</p> -->
-            </div>
+            </section>
 
-            <div class="section">
+            <section class="section">
                 <p>Sila <b>maklumkan kehadiran</b> anda <b>sebelum 20 Julai 2025</b></p>
-            </div>
+            </section>
 
-            <div class="section">
+            <section class="section">
                 <h3>Kiraan Detik</h3>
                 <div id="countdown" class="countdown"></div>
-            </div>
+            </section>
 
             <!-- Gallery Section -->
-            <div class="section" id="gallerySection">
+            <section class="section" id="gallerySection">
                 <h3>Galeri Gambar</h3>
                 <div class="slideshow-container">
                     <div class="slide"><img src="img/pic4.jpg" alt="Gambar 1"></div>
@@ -62,28 +96,28 @@
                     <span class="dot" onclick="currentSlide(2)"></span>
                     <span class="dot" onclick="currentSlide(3)"></span>
                 </div>
-            </div>
+            </section>
 
-            <div class="section verse">
+            <section class="section verse">
                 “Dan Kami telah menciptakan kamu berpasang-pasangan.”<br />
                 <strong>(An-Naba’ : 8)</strong>
-            </div>
+            </section>
 
             <!-- Ucapan Section -->
-            <div class="section" id="ucapanSection">
+            <section class="section" id="ucapanSection">
                 <h3>Ucapan</h3>
                 <div class="ucapan-container">
                     <div class="ucapan-track" id="ucapanTrack"></div>
                 </div>
-            </div>
+            </section>
 
-            <div class="section hidden" id="songSection">
+            <section class="section hidden" id="songSection">
                 <h3>Lagu Perkahwinan</h3>
                 <div class="video-container" id="youtubePlayerContainer">
                 </div>
-            </div>
+            </section>
 
-            <div class="section hidden" id="mapSection">
+            <section class="section hidden" id="mapSection">
                 <h3>Lokasi</h3>
                 <div class="location-links">
                     <a href="https://www.google.com/maps/search/?api=1&query=Dewan+Serbaguna%2C+Kuala+Lumpur" target="_blank"
@@ -97,13 +131,13 @@
                         <span>Waze</span>
                     </a>
                 </div>
-            </div>
+            </section>
 
-            <div class="section hidden" id="calendarSection">
+            <section class="section hidden" id="calendarSection">
                 <h3>Tambah ke Kalendar</h3>
                 <div class="calendar-links">
                     <!-- Apple Calendar (.ics file download) -->
-                    <a href="src/calendar/dannial-wedding.ics" class="calendar-item" download>
+                    <a href="src/calendar/dannial-wedding.ics" class="calendar-item">
                         <img src="icon/calendar.png" alt="Apple Calendar Icon">
                         <span>Apple Calendar</span>
                     </a>
@@ -115,10 +149,10 @@
                         <span>Google Calendar</span>
                     </a>
                 </div>
-            </div>
+            </section>
 
 
-            <div class="section hidden" id="contactSection">
+            <section class="section hidden" id="contactSection">
                 <h3>Hubungi</h3>
                 <div class="contact-list">
                     <div class="contact-person">
@@ -167,10 +201,38 @@
 
                     <!-- Repeat the block above for more contacts -->
                 </div>
-            </div>
+            </section>
+
+            <section class="section hidden" id="qrSection">
+                <h3>Sumbangan</h3>
+                <p>Scan QR di bawah jika anda ingin memberi sumbangan.</p>
+                <div class="qr-card">
+                    <img src="img/bank-qr-placeholder.svg" alt="QR Bank Sumbangan" class="qr-image">
+                    <p class="qr-note">Gantikan fail img/bank-qr-placeholder.svg dengan QR bank anda sendiri.</p>
+                </div>
+            </section>
+
+            <section class="section hidden" id="giftSection">
+                <h3>Hadiah Pengantin</h3>
+                <p>Pilih hadiah yang ingin ditempah. Item yang sudah dipilih akan ditandakan.</p>
+                <div id="giftList" class="gift-grid"></div>
+
+                <form id="giftForm" class="hidden">
+                    <input type="text" name="nama" id="giftNama" placeholder="Nama anda" required>
+                    <input type="hidden" id="giftItemId">
+                    <input type="hidden" id="giftItemName">
+                    <textarea name="gift_note" placeholder="Nota (optional)" rows="2"></textarea>
+                    <button type="submit">Tempah Hadiah</button>
+                    <button type="button" onclick="cancelGiftReservation()">Batal</button>
+                </form>
+
+                <div id="giftMessage" class="hidden">
+                    <p>Terima kasih! Tempahan hadiah anda telah direkodkan.</p>
+                </div>
+            </section>
 
 
-            <div class="section hidden" id="rsvpSection">
+            <section class="section hidden" id="rsvpSection">
                 <!-- <div id="rsvpWrapper" class="section"> -->
                 <div class="section">
                     <h2>RSVP</h2>
@@ -216,16 +278,18 @@
                         <p>Terima kasih atas maklum balas anda!</p>
                     </div>
                 </div>
-            </div>
+            </section>
 
             <div class="nav">
                 <button onclick="toggleSection('songSection')">Lagu</button>
                 <button onclick="toggleSection('mapSection')">Lokasi</button>
                 <button onclick="toggleSection('calendarSection')">Kalendar</button>
                 <button onclick="toggleSection('contactSection')">Hubungi</button>
+                <button onclick="toggleSection('qrSection')">QR</button>
+                <button onclick="toggleSection('giftSection')">Hadiah</button>
                 <button onclick="toggleSection('rsvpSection')">RSVP</button>
             </div>
-        </div>
+        </main>
         <script src="src/js/main.js" defer></script>
     </div>
 </body>

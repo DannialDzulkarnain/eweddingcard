@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="640" height="640" viewBox="0 0 640 640" role="img" aria-labelledby="title desc">
+  <title id="title">Bank QR Placeholder</title>
+  <desc id="desc">Replace this placeholder with your actual bank QR code image.</desc>
+  <rect width="640" height="640" fill="#fffdf8" />
+  <rect x="42" y="42" width="556" height="556" rx="18" fill="#fff" stroke="#ccb394" stroke-width="8" />
+  <rect x="94" y="94" width="120" height="120" fill="#2d2a26" />
+  <rect x="426" y="94" width="120" height="120" fill="#2d2a26" />
+  <rect x="94" y="426" width="120" height="120" fill="#2d2a26" />
+  <g fill="#2d2a26">
+    <rect x="260" y="108" width="26" height="26" />
+    <rect x="298" y="108" width="26" height="26" />
+    <rect x="336" y="108" width="26" height="26" />
+    <rect x="374" y="108" width="26" height="26" />
+    <rect x="260" y="146" width="26" height="26" />
+    <rect x="336" y="146" width="26" height="26" />
+    <rect x="260" y="184" width="26" height="26" />
+    <rect x="298" y="184" width="26" height="26" />
+    <rect x="374" y="184" width="26" height="26" />
+    <rect x="260" y="260" width="26" height="26" />
+    <rect x="336" y="260" width="26" height="26" />
+    <rect x="374" y="260" width="26" height="26" />
+    <rect x="298" y="298" width="26" height="26" />
+    <rect x="336" y="298" width="26" height="26" />
+    <rect x="260" y="336" width="26" height="26" />
+    <rect x="374" y="336" width="26" height="26" />
+    <rect x="260" y="374" width="26" height="26" />
+    <rect x="298" y="374" width="26" height="26" />
+    <rect x="336" y="374" width="26" height="26" />
+    <rect x="374" y="374" width="26" height="26" />
+    <rect x="260" y="412" width="26" height="26" />
+    <rect x="336" y="412" width="26" height="26" />
+    <rect x="374" y="412" width="26" height="26" />
+    <rect x="260" y="450" width="26" height="26" />
+    <rect x="298" y="450" width="26" height="26" />
+    <rect x="374" y="450" width="26" height="26" />
+    <rect x="260" y="488" width="26" height="26" />
+    <rect x="336" y="488" width="26" height="26" />
+    <rect x="374" y="488" width="26" height="26" />
+    <rect x="426" y="260" width="26" height="26" />
+    <rect x="464" y="260" width="26" height="26" />
+    <rect x="502" y="260" width="26" height="26" />
+    <rect x="540" y="260" width="26" height="26" />
+    <rect x="426" y="298" width="26" height="26" />
+    <rect x="502" y="298" width="26" height="26" />
+    <rect x="540" y="298" width="26" height="26" />
+    <rect x="426" y="336" width="26" height="26" />
+    <rect x="464" y="336" width="26" height="26" />
+    <rect x="540" y="336" width="26" height="26" />
+    <rect x="426" y="374" width="26" height="26" />
+    <rect x="502" y="374" width="26" height="26" />
+    <rect x="540" y="374" width="26" height="26" />
+    <rect x="426" y="412" width="26" height="26" />
+    <rect x="464" y="412" width="26" height="26" />
+    <rect x="502" y="412" width="26" height="26" />
+    <rect x="540" y="412" width="26" height="26" />
+    <rect x="426" y="450" width="26" height="26" />
+    <rect x="502" y="450" width="26" height="26" />
+    <rect x="540" y="450" width="26" height="26" />
+    <rect x="426" y="488" width="26" height="26" />
+    <rect x="464" y="488" width="26" height="26" />
+    <rect x="540" y="488" width="26" height="26" />
+  </g>
+  <text x="320" y="598" text-anchor="middle" font-family="Manrope, Arial, sans-serif" font-size="24" fill="#6b655f">
+    Replace with your bank QR code
+  </text>
+</svg>
